@@ -1,7 +1,10 @@
 var express = require("express");
 var router = express.Router();
 var pgp = require("pg-promise")(/*options*/);
-var db = pgp("postgres://postgres:password@127.0.0.1:5432/postgres");
+var db = pgp(
+  process.env.DATABASE_URL ||
+    "postgres://postgres:password@127.0.0.1:5432/postgres"
+);
 
 /* GET users listing. */
 router.get("/", function(req, res) {
