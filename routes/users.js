@@ -9,7 +9,7 @@ var db = pgp(
 /* GET users listing. */
 router.get("/", function(req, res) {
   console.log("here");
-  db.one("SELECT * from test limit 1;")
+  db.one("SELECT * from users limit 1;")
     .then(function(data) {
       query = data;
       res.send(query);
