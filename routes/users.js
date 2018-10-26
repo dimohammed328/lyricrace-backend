@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var pgp = require("pg-promise")(/*options*/);
+
 var db = pgp(
   process.env.DATABASE_URL ||
     "postgres://postgres:password@127.0.0.1:5432/postgres"
@@ -17,6 +18,10 @@ router.get("/", function(req, res) {
     .catch(function(error) {
       console.log("ERROR:", error);
     });
+});
+router.post("/", function(req, res) {
+  console.log(req);
+  res.send("got it");
 });
 
 module.exports = router;
