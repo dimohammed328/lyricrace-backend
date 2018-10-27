@@ -5,8 +5,11 @@ const passport = require("passport");
 var { query } = require("../config/database.js");
 
 module.exports = function(passport) {
-  router.post("/", passport.authenticate("local"), (req, res) => {
-    res.send(req.user);
-  });
+  router.post(
+    "/",
+    /*passport.authenticate("local"),*/ (req, res) => {
+      res.send("it, works");
+    }
+  );
   return router;
 };
