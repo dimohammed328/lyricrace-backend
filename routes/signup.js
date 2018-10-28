@@ -3,7 +3,7 @@ var router = express.Router();
 
 module.exports = function(passport) {
   router.post("/", function(req, res, next) {
-    passport.authenticate("local-login", function(err, user, info) {
+    passport.authenticate("local-signup", function(err, user, info) {
       if (err) {
         return next(err);
       }
