@@ -1,12 +1,11 @@
 var express = require("express");
 var router = express.Router();
+var pgp = require("pg-promise")(/*options*/);
+const passport = require("passport");
+var { query } = require("../config/database.js");
 
 module.exports = function(passport) {
   router.post("/", function(req, res, next) {
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      "https://lyricrace.herokuapp.com"
-    );
     passport.authenticate("local-login", function(err, user, info) {
       if (err) {
         return next(err);
@@ -30,6 +29,5 @@ module.exports = function(passport) {
       });
     })(req, res, next);
   });
-
   return router;
 };
