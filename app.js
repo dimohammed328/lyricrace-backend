@@ -1,11 +1,6 @@
 const express = require("express");
 const app = express();
-<<<<<<< HEAD
 const port = process.env.PORT || 3001;
-=======
-const port = process.env.PORT || 3000;
-const { Client, Pool } = require("pg");
->>>>>>> parent of d309126... authorization successful
 const passport = require("passport");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
@@ -24,19 +19,7 @@ app.use(bodyParser());
 app.use(cors());
 
 //passport setup-----------------------------------------------------
-<<<<<<< HEAD
-app.use(
-  session({
-    // store: new pgSession({ pool: dbConfig.pool }),
-    secret: "W?1.<)zsA(27Bk^",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 24 * 60 * 60 }
-  })
-);
-=======
 app.use(session({ secret: "secretkey" }));
->>>>>>> parent of d309126... authorization successful
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -47,6 +30,9 @@ var loginRouter = require("./routes/login.js")(passport);
 app.use("/login", loginRouter);
 // app.get("/", (req, res) => res.send("Test \n"));
 // app.use("/users", userRouter);
+
+var signupRouter = require("./routes/signup.js")(passport);
+app.use("/", signupRouter);
 
 app.listen(port, () =>
   console.log(`Example app listening test on port ${port}!`)
