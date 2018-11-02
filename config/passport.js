@@ -7,7 +7,7 @@ module.exports = passport => {
     "local-login",
     new LocalStrategy((username, password, cb) => {
       query(
-        "SELECT id, username, password, type FROM users WHERE username=$1",
+        "SELECT id, username, password FROM users WHERE username=$1",
         [username],
         (err, result) => {
           if (err) {
@@ -21,8 +21,7 @@ module.exports = passport => {
               if (res) {
                 cb(null, {
                   id: first.id,
-                  username: first.username,
-                  type: first.type
+                  username: first.username
                 });
               } else {
                 cb(null, false);
@@ -79,7 +78,7 @@ module.exports = passport => {
 
   passport.deserializeUser((id, cb) => {
     db.query(
-      "SELECT id, username, type FROM users WHERE id = $1",
+      "SELECT id, username FROM users WHERE id = $1",
       [parseInt(id, 10)],
       (err, results) => {
         if (err) {
