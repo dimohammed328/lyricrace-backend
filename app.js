@@ -34,8 +34,11 @@ app.use("/login", loginRouter);
 var signupRouter = require("./routes/signup.js")(passport);
 app.use("/signup", signupRouter);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> parent of d309126... authorization successful
+=======
+>>>>>>> parent of fdded4a... Adding sessions
 =======
 >>>>>>> parent of fdded4a... Adding sessions
 
