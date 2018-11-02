@@ -21,7 +21,7 @@ app.use(cors());
 //passport setup-----------------------------------------------------
 app.use(
   session({
-    store: new pgSession({ pool: dbConfig.pool }),
+    // store: new pgSession({ pool: dbConfig.pool }),
     secret: "W?1.<)zsA(27Bk^",
     resave: false,
     saveUninitialized: true,
