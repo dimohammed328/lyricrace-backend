@@ -3,6 +3,10 @@ var router = express.Router();
 
 module.exports = function(passport) {
   router.post("/", function(req, res, next) {
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://lyricrace.herokuapp.com"
+    );
     passport.authenticate("local-login", function(err, user, info) {
       if (err) {
         return next(err);
