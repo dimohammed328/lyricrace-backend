@@ -1,11 +1,15 @@
 var LocalStrategy = require("passport-local").Strategy;
-var query = require("./database.js");
+var db = require("./database.js");
 var bcrypt = require("bcrypt-nodejs");
 
 module.exports = passport => {
   passport.use(
     new LocalStrategy((username, password, cb) => {
+<<<<<<< HEAD
       query(
+=======
+      db.query(
+>>>>>>> parent of d309126... authorization successful
         "SELECT id, username, password, type FROM users WHERE username=$1",
         [username],
         (err, result) => {

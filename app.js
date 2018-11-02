@@ -1,6 +1,11 @@
 const express = require("express");
 const app = express();
+<<<<<<< HEAD
 const port = process.env.PORT || 3001;
+=======
+const port = process.env.PORT || 3000;
+const { Client, Pool } = require("pg");
+>>>>>>> parent of d309126... authorization successful
 const passport = require("passport");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
@@ -29,9 +34,12 @@ var loginRouter = require("./routes/login.js")(passport);
 app.use("/login", loginRouter);
 // app.get("/", (req, res) => res.send("Test \n"));
 // app.use("/users", userRouter);
+<<<<<<< HEAD
 
 var signupRouter = require("./routes/signup.js")(passport);
 app.use("/signup", signupRouter);
+=======
+>>>>>>> parent of d309126... authorization successful
 
 app.listen(port, () =>
   console.log(`Example app listening test on port ${port}!`)

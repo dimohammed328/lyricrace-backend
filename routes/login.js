@@ -5,6 +5,7 @@ const passport = require("passport");
 var { query } = require("../config/database.js");
 
 module.exports = function(passport) {
+<<<<<<< HEAD
   router.post("/", function(req, res, next) {
     passport.authenticate("local-login", function(err, user, info) {
       if (err) {
@@ -28,6 +29,10 @@ module.exports = function(passport) {
         });
       });
     })(req, res, next);
+=======
+  router.post("/", passport.authenticate("local"), (req, res) => {
+    res.send("it, works");
+>>>>>>> parent of d309126... authorization successful
   });
   return router;
 };
