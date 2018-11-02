@@ -6,7 +6,7 @@ var { query } = require("../config/database.js");
 
 module.exports = function(passport) {
   router.post("/", function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "true");
+    req.setHeader("Access-Control-Allow-Origin", "true");
     passport.authenticate("local-login", function(err, user, info) {
       if (err) {
         return next(err);
