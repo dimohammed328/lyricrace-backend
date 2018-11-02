@@ -31,6 +31,9 @@ app.use("/login", loginRouter);
 var signupRouter = require("./routes/signup.js")(passport);
 app.use("/signup", signupRouter);
 
+var authenticateRouter = require("./routes/authenticate.js")(passport);
+app.use("/", authenticateRouter);
+
 app.listen(port, () =>
   console.log(`Example app listening test on port ${port}!`)
 );
