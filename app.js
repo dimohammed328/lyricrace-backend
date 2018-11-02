@@ -7,7 +7,6 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const cors = require("cors");
-const pgSession = require("connect-pg-simple")(session);
 require("./config/passport")(passport);
 
 //databse config------------------------------------------------
@@ -32,7 +31,7 @@ app.use("/login", loginRouter);
 // app.use("/users", userRouter);
 
 var signupRouter = require("./routes/signup.js")(passport);
-app.use("/", signupRouter);
+app.use("/signup", signupRouter);
 
 app.listen(port, () =>
   console.log(`Example app listening test on port ${port}!`)
