@@ -48,9 +48,6 @@ app.use("/login", loginRouter);
 // app.get("/", (req, res) => res.send("Test \n"));
 // app.use("/users", userRouter);
 
-var authenticateRouter = require("./routes/authenticate.js")(passport);
-app.use("/", authenticateRouter);
-
 app.listen(port, () =>
   console.log(`Example app listening test on port ${port}!`)
 );
