@@ -19,7 +19,14 @@ app.use(bodyParser());
 app.use(cors());
 
 //passport setup-----------------------------------------------------
-app.use(session({ secret: "W?1.<)zsA(27Bk^" }));
+app.use(
+  session({
+    secret: "W?1.<)zsA(27Bk^",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 24 * 60 * 60 }
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
