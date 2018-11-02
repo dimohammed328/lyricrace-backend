@@ -7,15 +7,6 @@ pool.on("error", function(err) {
   console.log(err);
 });
 
-<<<<<<< HEAD
-module.exports = {
-  query: (text, params, callback) => {
-    console.log(text, params, callback);
-    return pool.query(text, params, callback);
-  },
-  pool: pool
-=======
 module.exports = function query(text, params, callback) {
   return pool.query(text, params, callback);
->>>>>>> parent of d309126... authorization successful
 };
