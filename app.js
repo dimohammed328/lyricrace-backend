@@ -29,18 +29,9 @@ var loginRouter = require("./routes/login.js")(passport);
 app.use("/login", loginRouter);
 // app.get("/", (req, res) => res.send("Test \n"));
 // app.use("/users", userRouter);
-<<<<<<< HEAD
 
 var signupRouter = require("./routes/signup.js")(passport);
 app.use("/signup", signupRouter);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of d309126... authorization successful
-=======
->>>>>>> parent of fdded4a... Adding sessions
-=======
->>>>>>> parent of fdded4a... Adding sessions
 
 app.listen(port, () =>
   console.log(`Example app listening test on port ${port}!`)
