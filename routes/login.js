@@ -8,13 +8,21 @@ module.exports = function(passport) {
         return next(err);
       }
       if (!user) {
-        return res.send({ user: false, message: info.message });
+        return res.send({
+          user: false,
+          message: info.message,
+          session: req.session
+        });
       }
       req.login(user, loginErr => {
         if (loginErr) {
           return next(loginErr);
         }
-        return res.send({ user: req.user, message: info.message });
+        return res.send({
+          user: req.user,
+          message: info.message,
+          session: req.session
+        });
       });
     })(req, res, next);
   });
