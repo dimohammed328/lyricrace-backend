@@ -1,11 +1,6 @@
 const express = require("express");
 const app = express();
-<<<<<<< HEAD
 const port = process.env.PORT || 3001;
-=======
-const port = process.env.PORT || 3000;
-const { Client, Pool } = require("pg");
->>>>>>> parent of d309126... authorization successful
 const passport = require("passport");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
@@ -38,8 +33,11 @@ app.use("/login", loginRouter);
 
 var signupRouter = require("./routes/signup.js")(passport);
 app.use("/signup", signupRouter);
+<<<<<<< HEAD
 =======
 >>>>>>> parent of d309126... authorization successful
+=======
+>>>>>>> parent of fdded4a... Adding sessions
 
 app.listen(port, () =>
   console.log(`Example app listening test on port ${port}!`)
