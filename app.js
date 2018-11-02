@@ -3,8 +3,8 @@ const app = express();
 const port = process.env.PORT || 3001;
 const passport = require("passport");
 const morgan = require("morgan");
-// const cookieParser = require("cookie-parser");
-// const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 const session = require("express-session");
 const cors = require("cors");
 const pgSession = require("connect-pg-simple")(session);
@@ -14,8 +14,8 @@ require("./config/passport")(passport);
 const dbConfig = require("./config/database.js");
 //express setup--------------------------------------------------
 app.use(morgan("dev"));
-// app.use(cookieParser());
-// app.use(bodyParser());
+app.use(cookieParser());
+app.use(bodyParser());
 app.use(cors());
 
 //passport setup-----------------------------------------------------
