@@ -1,26 +1,27 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
-const { Client, Pool } = require("pg");
 const passport = require("passport");
 const morgan = require("morgan");
-const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
+// const cookieParser = require("cookie-parser");
+// const bodyParser = require("body-parser");
 const session = require("express-session");
 const cors = require("cors");
+const pgSession = require("connect-pg-simple")(session);
 require("./config/passport")(passport);
 
 //databse config------------------------------------------------
-const { query } = require("./config/database.js");
+const dbConfig = require("./config/database.js");
 //express setup--------------------------------------------------
 app.use(morgan("dev"));
-app.use(cookieParser());
-app.use(bodyParser());
+// app.use(cookieParser());
+// app.use(bodyParser());
 app.use(cors());
 
 //passport setup-----------------------------------------------------
 app.use(
   session({
+    store: new pgSession({ pool: dbConfig.pool }),
     secret: "W?1.<)zsA(27Bk^",
     resave: false,
     saveUninitialized: true,
