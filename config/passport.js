@@ -19,16 +19,20 @@ module.exports = passport => {
             const first = result.rows[0];
             bcrypt.compare(password, first.password, function(err, res) {
               if (res) {
-                cb(null, {
-                  id: first.id,
-                  username: first.username
-                });
+                cb(
+                  null,
+                  {
+                    id: first.id,
+                    username: first.username
+                  },
+                  { message: "Successfully Logged In" }
+                );
               } else {
-                cb(null, false);
+                cb(null, false, { message: "Password Incorrect" });
               }
             });
           } else {
-            cb(null, false);
+            cb(null, false, { message: "User Not Found" });
           }
         }
       );
@@ -77,7 +81,7 @@ module.exports = passport => {
   });
 
   passport.deserializeUser((id, cb) => {
-    db.query(
+    query(
       "SELECT id, username FROM users WHERE id = $1",
       [parseInt(id, 10)],
       (err, results) => {
