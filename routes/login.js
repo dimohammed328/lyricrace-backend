@@ -1,8 +1,5 @@
 var express = require("express");
 var router = express.Router();
-var pgp = require("pg-promise")(/*options*/);
-const passport = require("passport");
-var { query } = require("../config/database.js");
 
 module.exports = function(passport) {
   router.post("/", function(req, res, next) {
@@ -14,6 +11,7 @@ module.exports = function(passport) {
         return res.send({
           user: false,
           message: info.message,
+          code: info.code,
           session: req.session
         });
       }
@@ -24,7 +22,9 @@ module.exports = function(passport) {
         return res.send({
           user: req.user,
           message: info.message,
-          session: req.session
+          code: info.code,
+          session: req.session,
+          sessionID: req.sessionID
         });
       });
     })(req, res, next);

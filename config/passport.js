@@ -1,5 +1,5 @@
 var LocalStrategy = require("passport-local").Strategy;
-var query = require("./database.js");
+var { query } = require("./database.js");
 var bcrypt = require("bcrypt-nodejs");
 
 module.exports = passport => {
@@ -25,14 +25,14 @@ module.exports = passport => {
                     id: first.id,
                     username: first.username
                   },
-                  { message: "Successfully Logged In" }
+                  { message: "Successfully Logged In", code: 0 }
                 );
               } else {
-                cb(null, false, { message: "Password Incorrect" });
+                cb(null, false, { message: "Password Incorrect", code: 2 });
               }
             });
           } else {
-            cb(null, false, { message: "User Not Found" });
+            cb(null, false, { message: "User Not Found", code: 1 });
           }
         }
       );
