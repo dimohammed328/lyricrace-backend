@@ -25,14 +25,14 @@ module.exports = passport => {
                     id: first.id,
                     username: first.username
                   },
-                  { message: "Successfully Logged In" }
+                  { message: "Successfully Logged In", code: 0 }
                 );
               } else {
-                cb(null, false, { message: "Password Incorrect" });
+                cb(null, false, { message: "Password Incorrect", code: 2 });
               }
             });
           } else {
-            cb(null, false, { message: "User Not Found" });
+            cb(null, false, { message: "User Not Found", code: 1 });
           }
         }
       );

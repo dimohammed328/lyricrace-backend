@@ -11,6 +11,7 @@ module.exports = function(passport) {
         return res.send({
           user: false,
           message: info.message,
+          code: info.code,
           session: req.session
         });
       }
@@ -21,7 +22,9 @@ module.exports = function(passport) {
         return res.send({
           user: req.user,
           message: info.message,
-          session: req.session
+          code: info.code,
+          session: req.session,
+          sessionID: req.sessionID
         });
       });
     })(req, res, next);
