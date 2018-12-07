@@ -60,6 +60,9 @@ app.use("/login", loginRouter);
 var signupRouter = require("./routes/signup.js")(passport);
 app.use("/signup", signupRouter);
 
+var songselectionRouter=require("./routes/songselection.js")();
+app.use("/songselection",songselectionRouter);
+
 var authenticateRouter = require("./routes/authenticate.js")(passport);
 app.use("/authenticate", authenticateRouter);
 
