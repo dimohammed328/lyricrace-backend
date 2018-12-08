@@ -64,6 +64,9 @@ app.use("/signup", signupRouter);
 var songselectionRouter = require("./routes/songselection.js")();
 app.use("/songselection", songselectionRouter);
 
+var leaderboardRouter = require("./routes/leaderboard.js")();
+app.use("/songselection", leaderboardRouter);
+
 var authenticateRouter = require("./routes/authenticate.js")(passport);
 app.use("/authenticate", authenticateRouter);
 
