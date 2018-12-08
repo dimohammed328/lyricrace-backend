@@ -32,8 +32,9 @@ app.use(passport.session());
 app.use((req, res, next) => {
   db.query(
     "SELECT sess FROM session WHERE sid=$1",
-    [req.cookies.sessionID],
+    [req.body.sessionID],
     (err, result) => {
+      console.log(req.body);
       if (err) {
         console.log("Error when selecting user on login", err);
         return next(err);
@@ -60,8 +61,8 @@ app.use("/login", loginRouter);
 var signupRouter = require("./routes/signup.js")(passport);
 app.use("/signup", signupRouter);
 
-var songselectionRouter=require("./routes/songselection.js")();
-app.use("/songselection",songselectionRouter);
+var songselectionRouter = require("./routes/songselection.js")();
+app.use("/songselection", songselectionRouter);
 
 var authenticateRouter = require("./routes/authenticate.js")(passport);
 app.use("/authenticate", authenticateRouter);
