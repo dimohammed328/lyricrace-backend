@@ -6,7 +6,7 @@ var { query } = require("../config/database.js");
 
 module.exports = function() {
   router.get("/", (req, res, next) => {
-    query("SELECT title,artist FROM songs", [], (err, result) => {
+    query("SELECT title,artist,id FROM songs", [], (err, result) => {
       if (err) {
         console.log("Error", err);
         return next(err);
