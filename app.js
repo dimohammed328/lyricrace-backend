@@ -65,7 +65,22 @@ var songselectionRouter = require("./routes/songselection.js")();
 app.use("/songselection", songselectionRouter);
 
 var leaderboardRouter = require("./routes/leaderboard.js")();
-app.use("/leaderboard/:id", leaderboardRouter);
+app.get("/leaderboard/:id", (req, res, next) => {
+  db.query(
+    `SELECT users.username, songs.title, scores.timesec, songid FROM scores JOIN users ON users.id=scores.userid JOIN songs ON scores.songid=songs.id where ${
+      req.params.id
+    }=songid`,
+    [],
+    (err, result) => {
+      if (err) {
+        console.log("Error", err);
+        return next(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
 
 var authenticateRouter = require("./routes/authenticate.js")(passport);
 app.use("/authenticate", authenticateRouter);
