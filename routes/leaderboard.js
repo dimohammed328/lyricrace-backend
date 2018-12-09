@@ -9,7 +9,7 @@ module.exports = function() {
     query(
       `SELECT users.username, songs.title, scores.timesec, songid FROM scores JOIN users ON users.id=scores.userid JOIN songs ON scores.songid=songs.id where ${
         req.params.id
-      }=songid ORDER BY scores.timesec DESC`,
+      }=songid`,
       [],
       (err, result) => {
         if (err) {
